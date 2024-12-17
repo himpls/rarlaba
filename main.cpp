@@ -24,3 +24,21 @@ struct file_head{
     uint32_t FileAttr;
     uint16_t FileName;
 };
+
+int main()
+{
+    ifstream file("C:\\laba2\\labaaa\\laba.rar", ios::binary);
+    if (file.is_open())
+    {
+        file.seekg(0, ios::end);
+        int size = file.tellg();
+        file.seekg(0, ios::beg);
+        vector <char> readfile(size, 0);
+        file.read(readfile.data(), size);
+        out(readfile, 20);
+    }
+    else
+    {
+        cout << "File is not opened" << endl;
+    }
+}
